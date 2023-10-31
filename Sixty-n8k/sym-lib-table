@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "sc28l92_plc44-65xx")(type "KiCad")(uri "/Users/nrivard/Desktop/sc28l92_plc44-65xx.kicad_sym")(options "")(descr ""))
+  (lib (name "Sixty-n8k")(type "KiCad")(uri "${KIPRJMOD}/Sixty-n8k.kicad_sym")(options "")(descr ""))
+)
