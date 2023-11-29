@@ -2,4 +2,5 @@
   (version 7)
   (lib (name "sc28l92_plc44-65xx")(type "KiCad")(uri "/Users/nrivard/Desktop/sc28l92_plc44-65xx.kicad_sym")(options "")(descr ""))
   (lib (name "Sixty-n8k")(type "KiCad")(uri "${KIPRJMOD}/Sixty-n8k.kicad_sym")(options "")(descr ""))
+  (lib (name "USB4085-GF-A_REVB")(type "KiCad")(uri "${KIPRJMOD}/USB4085_GF_A/USB4085-GF-A_REVB.kicad_sym")(options "")(descr ""))
 )
