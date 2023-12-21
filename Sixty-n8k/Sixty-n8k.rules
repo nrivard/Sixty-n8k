@@ -1,0 +1,116 @@
+
+(rules PCB Sixty-n8k
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 44)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.5)
+    )
+    (layer_rule "GND_PLANE"
+      (active off)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.5)
+    )
+    (layer_rule "PWR_PLANE"
+      (active off)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.5)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.7)
+    )
+  )
+  (rule
+    (width 154.0)
+    (clearance 200.2)
+    (clearance 77.0 (type smd_to_turn_gap))
+    (clearance 50.0 (type smd))
+    (clearance 200.2 (type "kicad_default"))
+  )
+  (padstack "Via[0-3]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle "GND_PLANE" 800.0 0.0 0.0)
+    )
+    (shape
+      (circle "PWR_PLANE" 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-3]_800:400_um" "Via[0-3]_800:400_um" default
+  )
+  (via 
+    "Via[0-3]_800:400_um-kicad_default" "Via[0-3]_800:400_um" "kicad_default"
+  )
+  (via_rule
+    default "Via[0-3]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-3]_800:400_um-kicad_default"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 154.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    GND +5V "Net-(D1-K)" "Net-(D2-K)" "Net-(D3-K)" "~{IRQ_MFP}" RxD TxD
+    "Net-(D4-K)" HALT ~{BERR} ~{DTACK} ~{VPA} ~{BR} ~{BGACK} /D4
+    /D3 /D2 /D1 /D0 ~{AS} ~{UDS} ~{LDS} R~{W}
+    ~{HALT} ~{RES} "unconnected-(J3-Pin_38-Pad38)" /IPL2 /FC2 /FC1 /FC0 /A1
+    /A2 /A3 /A4 /A5 /A6 /A7 /A8 /A9
+    /A10 /A11 /A12 /A13 /A14 /A15 /A16 /A17
+    /A18 /A19 /A20 /A21 /A22 /A23 /D15 /D14
+    /D13 /D12 /D11 /D10 /D9 /D8 /D7 /D6
+    /D5 /RES ~{CTS} ~{RTS} "~{IACK_MFP}" "~{IACK_7}" "USB_D+" "USB_D-"
+    "unconnected-(X1-EN-Pad1)" "~{IACK_HI}" "unconnected-(U16-O5-Pad10)" ~{BG} "CLK_{CPU}" ~{VMA} E "~{CS_MFP}"
+    "~{CS_RAM}" "~{CS_ROM}" "Net-(U2-TR)" "Net-(C19-Pad1)" "unconnected-(U16-O3-Pad12)" "unconnected-(U16-O2-Pad13)" "~{DTACK_MFP}" "~{IACK_LOW}"
+    "unconnected-(U16-O0-Pad15)" "Net-(J1-CC1)" "Net-(J1-CC2)" "unconnected-(J1-SBU1-PadA8)" "unconnected-(J1-SBU2-PadB8)" "unconnected-(J1-SHELL__1-PadS2)" "unconnected-(J1-SHELL__2-PadS3)" "unconnected-(J1-SHELL__3-PadS4)"
+    "~{ROM_OVERLAY}" "Net-(U2-CV)" "Net-(U17-V3)" "Net-(U2-DIS)" "Net-(R4-Pad2)" "Net-(R10-Pad2)" "Net-(RN1-R3)" "Net-(RN1-R6)"
+    "Net-(U11A-Q3)" "~{CS_ROM}_{ODD}" "~{CS_RAM}_{ODD}" "~{CS_RAM}_{EVEN}" "~{CS_ROM}_{EVEN}" "unconnected-(U17-NC-Pad7)" "unconnected-(U17-NC-Pad8)" "unconnected-(U17-~{DSR}-Pad10)"
+    "unconnected-(U17-~{RI}-Pad11)" "unconnected-(U17-~{DCD}-Pad12)" "unconnected-(U17-~{DTR}-Pad13)" "unconnected-(U17-R232-Pad15)" "unconnected-(U9-D2+-Pad3)" "unconnected-(U9-D2--Pad4)" "unconnected-(U9-NC-Pad5)" "unconnected-(U10-Q0-Pad3)"
+    "unconnected-(U10-Q1-Pad4)" "unconnected-(U10-Q2-Pad5)" "unconnected-(U10-Q4-Pad10)" "unconnected-(U10-Q5-Pad11)" "unconnected-(U10-Q6-Pad12)" "unconnected-(U10-Q7-Pad13)" "unconnected-(U11A-Q0-Pad3)" "unconnected-(U11A-Q1-Pad4)"
+    "unconnected-(U11A-Q2-Pad5)" "unconnected-(U11B-Q3-Pad8)" "unconnected-(U11B-Q2-Pad9)" "unconnected-(U11B-Q1-Pad10)" /IPL1 "CLK_{HALF}" "~{CS_XPN}" "unconnected-(U13-GS-Pad14)"
+    "unconnected-(U13-EO-Pad15)" "Net-(U14A-RC)" "unconnected-(U14A-NC-Pad12)" "unconnected-(U14A-TAO-Pad13)" "unconnected-(U14A-TBO-Pad14)" "unconnected-(U14A-TCO-Pad15)" "unconnected-(U14A-XTAL2-Pad18)" "unconnected-(U14A-TAI-Pad19)"
+    "unconnected-(U14A-TBI-Pad20)" "unconnected-(U14A-I2-Pad24)" "unconnected-(U14A-I3-Pad25)" "unconnected-(J2-Pin_14-Pad14)" "unconnected-(U14A-TR-Pad30)" "unconnected-(U14A-RR-Pad31)" "unconnected-(U14A-IEO-Pad33)" "SD_MISO"
+    "~{SD_CLK}" "SD_MOSI" "~{SD_CS}" "unconnected-(J2-Pin_13-Pad13)" /IPL0 "unconnected-(J3-Pin_46-Pad46)" "unconnected-(J3-Pin_48-Pad48)" "~{DTACK_XPN}"
+    "BERR_WATCHDOG" "unconnected-(U12-IO15-Pad16)" "unconnected-(U12-IO16-Pad17)" "~{IRQ_LOW}" "~{IRQ_HI}" "unconnected-(J3-Pin_17-Pad17)" "unconnected-(J3-Pin_25-Pad25)" IACK
+    "unconnected-(RN1-R1-Pad2)" "Net-(RN1-R4)" "Net-(RN1-R8)"
+    (clearance_class "kicad_default")
+    (via_rule "kicad_default")
+    (rule
+      (width 154.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
