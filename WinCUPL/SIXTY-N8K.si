@@ -1,0 +1,67 @@
+Name     Sixty-n8k;
+PartNo   ATF22V10C-10PU;
+Date     1/12/2024;
+Revision 01;
+Designer Nate Rivard;
+Company  Rivaudio;
+Assembly None;
+Location Amsterdam;
+Device   g22v10;
+
+
+ORDER: A23, A22, A21, A20, A19, A18, A17, A16, AS, LDS, UDS, IACK, ROM_OVERLAY, RW, CS_ROM, CS_RAM, CS_ROM_ODD, CS_ROM_EVEN, CS_RAM_ODD, CS_RAM_EVEN, CS_MFP, CS_XPN; 
+
+
+VECTORS:
+/* ROM overlaid on starting addresses */
+00000000 111 001 HHHHHHHH  /* start of ROM overlay,  de-asserted */
+00000000 000 001 LHLLHHHH  /* start of ROM overlay, read word, asserted */
+00000000 001 001 LHLHHHHH  /* start of ROM overlay, read odd byte, asserted */
+00000000 010 001 LHHLHHHH  /* start of ROM overlay, read even byte, asserted */
+00000000 000 000 HHHHHHHH  /* start of ROM overlay, write word, de-asserted */
+00000000 000 101 HHHHHHHH  /* start of ROM overlay, IACK, de-asserted */
+
+/* RAM */
+00000000 111 011 HHHHHHHH  /* start of RAM, de-asserted */
+00000000 000 011 HLHHLLHH  /* start of RAM, read word, asserted */
+00000000 001 011 HLHHLHHH  /* start of RAM, read odd byte, asserted */
+00000000 010 011 HLHHHLHH  /* start of RAM, read even byte, asserted */
+00000000 000 010 HLHHLLHH  /* start of RAM, write word, asserted */
+00000000 001 010 HLHHLHHH  /* start of RAM, write odd byte, asserted */
+00000000 010 010 HLHHHLHH  /* start of RAM, write even byte, asserted */
+00000000 000 111 HHHHHHHH  /* start of RAM, IACK, de-asserted */
+
+/* ROM at normal address range */
+01000000 111 001 HHHHHHHH  /* start of ROM, overlay, de-asserted */
+01000000 000 001 LHLLHHHH  /* start of ROM, overlay, read word, asserted */
+01000000 001 001 LHLHHHHH  /* start of ROM, overlay, read odd byte, asserted */
+01000000 010 001 LHHLHHHH  /* start of ROM, overlay, read even byte, asserted */
+01000000 000 000 HHHHHHHH  /* start of ROM, overlay, write word, de-asserted */
+01000000 000 101 HHHHHHHH  /* start of ROM, overlay, IACK, de-asserted */
+
+01000000 111 001 HHHHHHHH  /* start of ROM, overlay, de-asserted */
+01000000 000 011 LHLLHHHH  /* start of ROM, no overlay, read word, asserted */
+01000000 001 011 LHLHHHHH  /* start of ROM, no overlay, read odd byte, asserted */
+01000000 010 011 LHHLHHHH  /* start of ROM, no overlay, read even byte, asserted */
+01000000 000 010 HHHHHHHH  /* start of ROM, no overlay, write word, de-asserted */
+01000000 000 111 HHHHHHHH  /* start of ROM, no overlay, IACK, de-asserted */
+
+/* Expansion port */
+10000000 111 011 HHHHHHHH  /* start of xpn, de-asserted */
+10000000 000 011 HHHHHHHL  /* start of xpn, read word, asserted */
+10000000 001 011 HHHHHHHL  /* start of xpn, read odd byte, asserted */
+10000000 010 011 HHHHHHHL  /* start of xpn, read even byte, asserted */
+10000000 000 010 HHHHHHHL  /* start of xpn, write word, asserted */
+10000000 001 010 HHHHHHHL  /* start of xpn, write odd byte, asserted */
+10000000 010 010 HHHHHHHL  /* start of xpn, write even byte, asserted */
+10000000 000 111 HHHHHHHH  /* start of xpn, IACK, de-asserted */
+
+/* MFP */
+11100000 111 011 HHHHHHHH  /* start of mfp, de-asserted */
+11100000 000 011 HHHHHHLH  /* start of mfp, read word, asserted */
+11100000 001 011 HHHHHHLH  /* start of mfp, read odd byte, asserted */
+11100000 010 011 HHHHHHLH  /* start of mfp, read even byte, asserted */
+11100000 000 010 HHHHHHLH  /* start of mfp, write word, asserted */
+11100000 001 010 HHHHHHLH  /* start of mfp, write odd byte, asserted */
+11100000 010 010 HHHHHHLH  /* start of mfp, write even byte, asserted */
+11100000 000 111 HHHHHHHH  /* start of mfp, IACK, de-asserted */

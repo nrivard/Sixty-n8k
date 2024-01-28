@@ -1,0 +1,86 @@
+%SIGNAL
+PIN   1 =  A16 
+PIN   2 =  A17 
+PIN   3 =  A18 
+PIN   4 =  A19 
+PIN   5 =  A20 
+PIN   6 =  A21 
+PIN   7 =  A22 
+PIN   8 =  A23 
+PIN   9 =  AS 
+PIN  23 =  CS_MFP 
+PIN  17 =  CS_RAM 
+PIN  20 =  CS_RAM_EVEN 
+PIN  19 =  CS_RAM_ODD 
+PIN  16 =  CS_ROM 
+PIN  22 =  CS_ROM_EVEN 
+PIN  21 =  CS_ROM_ODD 
+PIN  18 =  CS_XPN 
+PIN  13 =  IACK 
+PIN  11 =  LDS 
+PIN  14 =  ROM_OVERLAY 
+PIN  15 =  RW 
+PIN  10 =  UDS 
+%END
+
+%FIELD
+FIELD ADDRESS = A23,A22,A21,A20,A19,A18,A17,A16
+%END
+
+%EQUATION
+!CS_MFP =>
+    !A20 & A21 & A22 & A23 & !AS & !IACK
+
+!CS_RAM =>
+    !A20 & !A21 & !A22 & !A23 & !AS & !IACK & ROM_OVERLAY
+
+!CS_RAM_EVEN =>
+    !CS_RAM & !UDS
+
+!CS_RAM_ODD =>
+    !CS_RAM & !LDS
+
+!CS_ROM =>
+    !A20 & !A21 & !A22 & !A23 & !AS & !IACK & !ROM_OVERLAY & RW
+  # !A20 & !A21 & A22 & !A23 & !AS & !IACK & RW
+
+!CS_ROM_EVEN =>
+    !CS_ROM & !UDS
+
+!CS_ROM_ODD =>
+    !CS_ROM & !LDS
+
+!CS_XPN =>
+    !A20 & !A21 & !A22 & A23 & !AS & !IACK
+
+CS_MFP.oe  =>
+    1 
+
+CS_RAM.oe  =>
+    1 
+
+CS_RAM_EVEN.oe  =>
+    1 
+
+CS_RAM_ODD.oe  =>
+    1 
+
+CS_ROM.oe  =>
+    1 
+
+CS_ROM_EVEN.oe  =>
+    1 
+
+CS_ROM_ODD.oe  =>
+    1 
+
+CS_XPN.oe  =>
+    1 
+
+ROM_OVERLAY.oe  =>
+    0 
+
+RW.oe  =>
+    0 
+
+%END

@@ -1,0 +1,40 @@
+Name     Sixty-n8k ;
+PartNo   ATF22V10C-10PU ;
+Date     1/12/2024 ;
+Revision 01 ;
+Designer Nate Rivard ;
+Company  Rivaudio ;
+Assembly None ;
+Location Amsterdam ;
+Device   g22v10 ;
+
+/* *************** INPUT PINS *********************/
+PIN [8..1] 	= [A23..A16] ;
+PIN 9 		= AS ;			/* active low */
+PIN 10		= UDS ; 		/* active low */
+PIN 11		= LDS ; 		/* active low */
+PIN 13		= IACK ; 		/* active HIGH */
+PIN 14		= ROM_OVERLAY ; 	/* active low (ie, rom is overlaid when low */
+PIN 15		= RW ; 		/* read is high, write is low */
+
+/* *************** OUTPUT PINS *********************/
+PIN 16		= CS_ROM ;
+PIN 17		= CS_RAM ; 
+PIN 18		= CS_XPN ; 
+PIN 19		= CS_RAM_ODD ;
+PIN 20		= CS_RAM_EVEN ;
+PIN 21		= CS_ROM_ODD ;
+PIN 22		= CS_ROM_EVEN ;
+PIN 23		= CS_MFP ;
+
+/* ******** DECLARATIONS AND INTERMEDIATES ********/
+FIELD ADDRESS = [A23..A16] ;
+
+!CS_ROM 	= (ADDRESS:[400000..4FFFFF] # (ADDRESS:[000000..0FFFFF] & !ROM_OVERLAY)) & !AS & !IACK & RW ;
+!CS_RAM 	= ADDRESS:[000000..0FFFFF] & ROM_OVERLAY & !AS & !IACK ;
+!CS_XPN	= ADDRESS:[800000..8FFFFF] & !AS & !IACK ;
+!CS_MFP	= ADDRESS:[E00000..EFFFFF] & !AS & !IACK ; /* LDS is hooked up directly to DS pin on the MFP */
+!CS_RAM_ODD	= !CS_RAM & !LDS ;
+!CS_RAM_EVEN	= !CS_RAM & !UDS ;
+!CS_ROM_ODD	= !CS_ROM & !LDS ;
+!CS_ROM_EVEN	= !CS_ROM & !UDS ;
