@@ -11522,7 +11522,7 @@
     (property "Value" "D_Schottky" (at 281.6225 332.74 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Diode_THT:D_DO-27_P12.70mm_Horizontal" (at 281.94 336.55 0)
+    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal" (at 281.94 336.55 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 281.94 336.55 0)
